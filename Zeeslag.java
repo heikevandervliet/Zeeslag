@@ -18,17 +18,17 @@ public class Zeeslag {
 
 	public static void vulVeld() {
 		int veld1 = (int) (Math.random() * 4);
-		int veld2 = (int) (Math.random() * 4);
+		int veld2 = (int) (Math.random() * 3);
 		int boot1 = (int) (Math.random() * 2);
-		int boot2 = (int) (Math.random() * 3);
+		int boot2 = (int) (Math.random() * 4);
 		veld2D[veld1][boot1] = 1;
 		veld2D[veld1][boot1+1] = 1;
 		veld2D[veld1][boot1+2] = 1;
-		while (veld1 == veld2) {
-			veld2 = (int) (Math.random() * 4);
+		while (veld1 == veld2 | veld1 == (veld2+1)) {
+			veld2 = (int) (Math.random() * 3);
 		}
 		veld2D[veld2][boot2] = 1;
-		veld2D[veld2][boot2+1] = 1;
+		veld2D[veld2+1][boot2] = 1;
 	}
 	
 	public static void printZee() {
