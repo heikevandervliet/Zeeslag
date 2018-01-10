@@ -3,7 +3,8 @@ import java.util.Arrays;
 
 public class Zeeslag {
 
-	static Integer[][] veld2D = { { 0, 1, 1, 1 }, { 0, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 1, 0, 0 } };
+	static Integer[][] veld2D = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+	// { { 0, 1, 1, 1 }, { 0, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 1, 0, 0 } };
 
 	static String[][] zee2D = { { "~", "~", "~", "~" }, { "~", "~", "~", "~" }, { "~", "~", "~", "~" },
 			{ "~", "~", "~", "~" } };
@@ -15,6 +16,21 @@ public class Zeeslag {
 
 	static int punten = 10;
 
+	public static void vulVeld() {
+		int veld1 = (int) (Math.random() * 4);
+		int veld2 = (int) (Math.random() * 4);
+		int boot1 = (int) (Math.random() * 2);
+		int boot2 = (int) (Math.random() * 3);
+		veld2D[veld1][boot1] = 1;
+		veld2D[veld1][boot1+1] = 1;
+		veld2D[veld1][boot1+2] = 1;
+		while (veld1 == veld2) {
+			veld2 = (int) (Math.random() * 4);
+		}
+		veld2D[veld2][boot2] = 1;
+		veld2D[veld2][boot2+1] = 1;
+	}
+	
 	public static void printZee() {
 		System.out.println("\t  " + Arrays.toString(veldwijzer));
 		System.out.println("\t 1" + Arrays.toString(zee2D[0]));
@@ -56,7 +72,7 @@ public class Zeeslag {
 						break OUTER;
 					} else if (i == 3 & j == 3 && veld2D[i][j] == 0) {
 						printZee();
-						System.out.println("Boten gezonken! Je wint.");
+						System.out.println("Alle boten gezonken! Je wint.");
 						System.out.println("Einde van het spel.");
 					}
 				}
@@ -68,7 +84,8 @@ public class Zeeslag {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Welkom bij Zeeslag");
+		vulVeld();
+		System.out.println("Welkom bij Zeeslag!");
 		System.out.println("Vind de twee boten door te schieten.");
 		System.out.println("Type per beurt nummer spatie nummer.");
 		System.out.println("Deze nummers geven de positie in zee aan waarop je wilt schieten.");
